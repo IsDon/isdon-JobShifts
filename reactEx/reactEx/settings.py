@@ -73,6 +73,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'reactEx.wsgi.application'
 
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+ANONYMOUS_USER_ID = 1
+
+AUTH_PROFILE_MODULE = 'accounts.OwnerProfile'
+
+USERENA_SIGNIN_REDIRECT_URL = '/accounts/%(username)s/'
+USERENA_ACTIVATION_REQUIRED = False
+USERENA_SIGNIN_AFTER_SIGNUP = True
+
+LOGIN_URL = '/accounts/signin/'
+LOGOUT_URL = '/accounts/signout/'
+
+
 
 STATICFILES_DIRS = (
     #This lets Django's collectstatic store our bundles
