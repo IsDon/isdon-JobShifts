@@ -1,0 +1,15 @@
+appdirs==1.4.3
+Django==1.11
+django-guardian==1.4.8
+django-userena==2.0.1
+django-webpack-loader==0.4.1
+djangorestframework==3.6.2
+easy-thumbnails==2.4.1
+html2text==2014.12.29
+olefile==0.44
+packaging==16.8
+Pillow==4.1.0
+Pygments==2.2.0
+pyparsing==2.2.0
+pytz==2017.2
+six==1.10.0

@@ -13,11 +13,42 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.sites.models import Site
+
 from . import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
+
+
+    # Staffer Views:
+    url(r'^jobs/', include('jobs.urls')),
+    # Admin (Business Owner) Additional Views:
+
+
+
+    # AJAX functions:
+
+
+
+    # django.js includes:
+    url(r'^djangojs/', include('djangojs.urls')),
+
+
+    # admin site (DJango):
+    url(r'^admin/', admin.site.urls),
+
+    # insert userena overrides if required:
+
+    # base userena:
+    url(r'^accounts/', include('userena.urls')),
 ]
+
+#windows environment static server:
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+urlpatterns += staticfiles_urlpatterns()
+
+#admin.autodiscover()
+admin.site.unregister(Site)

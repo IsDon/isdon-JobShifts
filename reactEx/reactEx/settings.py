@@ -37,8 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'webpack_loader',
+    'userena',
+    'guardian',
+    'easy_thumbnails',
+    'djangojs',
+    'rest_framework',
+
+    'jobs',
+    'accounts',
 
     'reactEx',
 ]
@@ -81,7 +90,7 @@ AUTHENTICATION_BACKENDS = (
 
 ANONYMOUS_USER_ID = 1
 
-AUTH_PROFILE_MODULE = 'accounts.OwnerProfile'
+AUTH_PROFILE_MODULE = 'accounts.Profile'
 
 USERENA_SIGNIN_REDIRECT_URL = '/accounts/%(username)s/'
 USERENA_ACTIVATION_REQUIRED = False
@@ -146,7 +155,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-au'
 
 TIME_ZONE = 'UTC'
 

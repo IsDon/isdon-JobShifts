@@ -48,3 +48,10 @@ Temporary Items
 
 env/
 node_modules/
+bundles/
+db.*
+1.4.6*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]

@@ -1,3 +1,5 @@
+from django.utils.translation import ugettext as _
+
 STATUS_POSITION_CHOICES = (
     (1, _("Open")),
     (2, _("Filled")),

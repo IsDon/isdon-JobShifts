@@ -1,0 +1,65 @@
+body {
+  margin: auto;
+  max-width:400px;
+  background-color: #66CCFF;
+  font-family: sans-serif;
+}
+#container .header input {
+  padding: 10px;
+  width: 300px;
+  font-size: 16px;
+  border: 2px solid #FFF;
+}
+#container .header button {
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  background-color: #0066FF;
+  color: #FFF;
+  border: 2px solid #0066FF;
+}
+#container .header button:hover {
+  background-color: #003399;
+  border: 2px solid #003399;
+  cursor: pointer;
+}
+
+#container .list {
+  width:100%;
+  padding:0;
+  margin:0;
+}
+#container .list ul {
+  -webkit-padding-start: 0;
+}
+#container .list li {
+  list-style: none;
+  border:1px solid grey;
+  border-radius: 0;
+  padding:3px;
+  position: relative;
+}
+#container .list li:first-child{
+  border-radius: 8px 8px 0 0;
+}
+#container .list li:last-child{
+  border-radius: 0 0 8px 8px;
+}
+#container .list button {
+  position:absolute;
+  right:6px;
+  top:1px;
+}
+#container .list button {
+  padding: 2px;
+  font-size: 6px;
+  margin: 2px;
+  background-color: #FF0033;
+  color: #FFF;
+  border: 2px solid #FF0033;
+}
+#container .list button:hover {
+  background-color: #991300;
+  border: 2px solid #991300;
+  cursor: pointer;
+}
