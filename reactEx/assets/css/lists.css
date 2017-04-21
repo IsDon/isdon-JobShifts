@@ -1,27 +1,48 @@
 body {
   margin: auto;
-  max-width:400px;
+  max-width:420px;
   background-color: #66CCFF;
   font-family: sans-serif;
 }
+#container .header {
+  position: relative;
+}
 #container .header input {
-  padding: 10px;
+  padding: 5px;
+  font-size: 15px;
   width: 300px;
-  font-size: 16px;
+  margin-left:auto;
   border: 2px solid #FFF;
 }
-#container .header button {
-  padding: 10px;
-  font-size: 16px;
-  margin: 10px;
+#container .header input[name^=time_] {
+  width:152px;
+}
+#container .header input[name=name] {
+  width:336px;
+}
+#container .header > form > button {
+  float:right;
+  padding: 5px;
+  font-size: 15px;
+/*  margin: 10px;*/
   background-color: #0066FF;
   color: #FFF;
   border: 2px solid #0066FF;
 }
-#container .header button:hover {
+#container .header > form > button:hover {
   background-color: #003399;
   border: 2px solid #003399;
   cursor: pointer;
+}
+#container h3, #container h4 {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  margin-top: 4px;
+  margin-bottom: 0.5em;
+}
+#container .header h4 {
+  margin-top:0;
+  font-style: italic;
 }
 
 #container .list {
@@ -36,29 +57,37 @@ body {
   list-style: none;
   border:1px solid grey;
   border-radius: 0;
-  padding:3px;
+  padding:8px;
   position: relative;
 }
 #container .list li:first-child{
   border-radius: 8px 8px 0 0;
 }
 #container .list li:last-child{
-  border-radius: 0 0 8px 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
-#container .list button {
+#container .list h3 > span:first-child + span {
+  position:relative;
+  left:2em;
+}
+#container .list h3 > span:first-child + span::before {
+  content: '- ';
+}
+#container .list li > button {
   position:absolute;
   right:6px;
   top:1px;
 }
-#container .list button {
-  padding: 2px;
-  font-size: 6px;
-  margin: 2px;
+#container .list li > button {
+  padding: 3px;
+  font-size: 8px;
+  margin: 3px;
   background-color: #FF0033;
   color: #FFF;
   border: 2px solid #FF0033;
 }
-#container .list button:hover {
+#container .list li > button:hover {
   background-color: #991300;
   border: 2px solid #991300;
   cursor: pointer;

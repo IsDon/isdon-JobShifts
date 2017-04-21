@@ -8,20 +8,22 @@ class PositionSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Position
 		fields = ('id', 'workShift', 'role', 'status', 'staff_filling')
+		url = 'role'
 
 
 class WorkShiftSerializer(serializers.ModelSerializer):
-	positions = PositionSerializer(many=True, source='Shift_Position', read_only=True)
+	subList = PositionSerializer(many=True, source='Shift_Position', read_only=True)
 	
 	class Meta:
 		model = WorkShift
-		fields = ('id', 'job', 'time_start', 'time_end', 'positions')
+		fields = ('id', 'job', 'time_start', 'time_end', 'subList')
+		url = 'shift'
 
 
 class JobSerializer(serializers.ModelSerializer):
-	shifts = WorkShiftSerializer(many=True, source='Job_Shift', read_only=True)
+	subList = WorkShiftSerializer(many=True, source='Job_Shift', read_only=True)
 
 	class Meta:
 		model = Job
-		fields = ('id', 'name', 'desc', 'location', 'shifts')
+		fields = ('id', 'name', 'desc', 'location', 'subList')
 

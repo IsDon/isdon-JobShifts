@@ -20,84 +20,61 @@ def home(request):
 
 # Day layout:
 
-def daily(request):
+# def daily(request):
 
-	response = render(request, 'reactEx/dayview.html')
+# 	response = render(request, 'reactEx/dayview.html')
 
-	return response
+# 	return response
 
 
 
 
 
 # AJAX functions:
-from rest_framework.filters import OrderingFilter
+# from rest_framework.filters import OrderingFilter
 
-class JobListViewSet(viewsets.ModelViewSet):
-	queryset = Job.objects.all()
-	serializer_class = JobSerializer
-	filter_backends = (OrderingFilter,)
-	ordering_fields = ('username', 'email')
+# class JobListViewSet(viewsets.ModelViewSet):
+# 	queryset = Job.objects.all()
+# 	serializer_class = JobSerializer
+# 	filter_backends = (OrderingFilter,)
+# 	ordering_fields = ('username', 'email')
 
-
-
-# from .forms import AddJobForm
-
-# def AddJob(request):
-
-# 	if request.method == 'POST':
-
-# 		print(request.POST)
-# 		form = AddJobForm(request.POST or None)
-
-# 		if form.is_valid():
-# 			print('*****Saving*****')
-# 			form.save()
-# 		else:
-# 			print(form.errors)
-	
-# 	# jobList = Job.objects.all()
-# 	# print(len(jobList))
-# 	# if(not jobList):
-# 	# 	print('Empty Job List')
-# 	# 	jsonJobs = []	# match empty set in format below TODO
-# 	# else:
-# 	# 	serializedJobs = JobSerializer(jobList)
-# 	# 	print(serializedJobs.data)
-# 	# 	jsonJobs = JSONRenderer().render(serializedJobs.data)
-
-# 	#response = JobListViewSet.list(AddJob, request)
-# 	response = JobList.as_view()
-# 	print(response)
-# 	return response
-# 	# return JsonResponse({
-# 	# 	"response" 	: "success",
-# 	# 	# "html_list"	: render_to_string(
-# 	# 	# 	'reactEx/dayview.html', {
-#  #  #           }, 
-#  #  #           request=request
-#  #  #       ),
-# 	# 	"jobs"		: jsonJobs
-#  #    })
 
 
 
 
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
 class JobList(generics.ListCreateAPIView):
+	permission_classes = (AllowAny,)
 	queryset = Job.objects.all()
 	serializer_class = JobSerializer
 
 class JobModify(generics.RetrieveUpdateDestroyAPIView):
+	permission_classes = (AllowAny,)
 	queryset = Job.objects.all()
 	serializer_class = JobSerializer
+
   
 class WorkShiftList(generics.ListCreateAPIView):
+	permission_classes = (AllowAny,)
 	queryset = WorkShift.objects.all()
 	serializer_class = WorkShiftSerializer
   
+class WorkShiftModify(generics.RetrieveUpdateDestroyAPIView):
+	permission_classes = (AllowAny,)
+	queryset = WorkShift.objects.all()
+	serializer_class = WorkShiftSerializer
+
+  
 class PositionList(generics.ListCreateAPIView):
+	permission_classes = (AllowAny,)
+	queryset = Position.objects.all()
+	serializer_class = PositionSerializer
+  
+class PositionModify(generics.RetrieveUpdateDestroyAPIView):
+	permission_classes = (AllowAny,)
 	queryset = Position.objects.all()
 	serializer_class = PositionSerializer

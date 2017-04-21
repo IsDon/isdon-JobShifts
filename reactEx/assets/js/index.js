@@ -4,18 +4,30 @@ import '../css/lists.css'
 
 var React = require('react')
 var ReactDOM = require('react-dom')
+
+var MAPPING = [
+		{'uri':'id',
+		'header':'Jobs',
+		'parentId' : '',
+		'fields': ['name']},
+		{'uri':'shift',
+		'header':'Shifts',
+		'parentId' : 'job',
+		'fields': ['time_start', 'time_end']},
+		{'uri':'role',
+		'header':'Positions',
+		'parentId' : 'workShift',
+		'fields': ['role']}
+	];
   
 class DjangoCSRFToken extends React.Component {
-  
   render() {
-
     var csrfToken = Django.csrf_token();
-
     return React.DOM.input(
       {type:"hidden", name:"csrfmiddlewaretoken", value:csrfToken}
-      );
+    );
   }
-};
+}
 
 class ButtonRemoveItem extends React.Component {
 	constructor(props) {
@@ -31,44 +43,138 @@ class ButtonRemoveItem extends React.Component {
 	}
 }
 
-class FormAddJob extends React.Component {
+class FormAddItem extends React.Component {
 	constructor(props) {
 		super(props);
-		this.addJob = this.props.parent.addJob;
+		var top = this.props.top;
+		this.addItem = top.addItem.bind(top, this.props.uri['uri']);
+		this.fields = this.props.uri['fields'];
 	}
 	
-	render() {
+	render() {			// ref={form => parent.addItemForm = form}	(using e.target)
+		var add_str = "add " + this.props.uri['header'];
+		var perFieldInputs = this.fields.map(function(item, index){
+        	return (
+        		<input 
+        			name={item} 
+        			key={index} 
+        			placeholder={item.replace('_', ' ').toLowerCase().replace(/(^| )(\w)/g, s => s.toUpperCase())}>
+        		</input>
+        	)
+        })
+        if(this.props.uri['parentId']) {
+        	perFieldInputs.push(
+        		<input 
+	        		type="hidden" 
+	        		key={this.fields.length}
+	        		name={this.props.uri['parentId']} 
+	        		value={this.props.pk}>
+	        	</input>
+        	)
+        }
 		return (
-			<form onSubmit={this.addJob} ref={form => this.props.parent.addJobForm = form}>
+			<form onSubmit={this.addItem}>
 				<DjangoCSRFToken />
-			    <input name="name" placeholder="add job"></input>
-			    <input name="location" type="hidden" placeholder="location" value=""></input>
 			    <button type="submit">add</button>
+			    {perFieldInputs}
 			</form>
 		)
 	}
 }
 
-class JobRow extends React.Component {
+class ItemRow extends React.Component {
+	constructor(props) {
+		super(props);
+		this.fields = this.props.uri[0]['fields'];
+	}
+
+	render() {
+		let item = this.props.obj;
+		let next_list;
+		if(item.subList) {
+			next_list = <ItemNodes 
+				items={item.subList} 
+				uri={this.props.uri.slice(1)} 
+				top={this.props.top} 
+				pk={item.id}
+			/>;
+		}
+		let cur_heading;
+		cur_heading = this.fields.map(function(prop, index){
+			if(prop.slice(0,5) == 'time_') {
+				var options = {
+				  year: 'numeric', month: 'numeric', day: 'numeric',
+				  hour: 'numeric', minute: 'numeric'
+				};
+				if(prop == 'time_end') {
+					options = {
+					  
+					  hour: 'numeric', minute: 'numeric',
+					  timeZoneName: 'short'
+					};
+				}
+				var datetimestr = new Intl.DateTimeFormat('en-AU', options).format(new Date(item[prop]));
+				return (
+					<span key={index}>
+						{datetimestr}
+					</span>
+				);
+			} else {
+				return (
+					<span key={index}>
+						{item[prop]}
+					</span>
+				);
+			}
+		})
+
+
+		return (
+        	<li key={item.id.toString()} >
+        		<h3>{cur_heading}</h3>
+        		<ButtonRemoveItem id={item.id} removeFn={this.props.removeFn} />
+        		{next_list}
+        	</li>
+		)
+	}
+}
+
+class ItemNodes extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 
 	render() {
-		let next_list = null;
-		let job = this.props.jobObj;
-    	if (job.shifts.length) {
-    		next_list = <ul>
-    			<li>Hello sub-list</li>
-    		</ul>;
+		var top = this.props.top;
+		var pk = this.props.pk;		//id from parent list row
+		
+		var uri = this.props.uri;
+        var perItemNodes =[];
+        if(this.props.items) {
+        	perItemNodes = this.props.items.map(function(item){
+	        	return (
+	        		<ItemRow 
+		        		key={item.id.toString()} 
+		        		obj={item} 
+		        		uri={uri} 
+		        		top={top} 
+		        		removeFn={top.removeItem.bind(top, item.id, uri[0]['uri'])} />
+	        	)
+	        })
     	}
-		return (
-        	<li key={job.id.toString()} >
-        		{job.name} 
-        		<ButtonRemoveItem id={job.id} removeFn={this.props.removeFn} />
-        		{next_list}
-        	</li>
-		)
+        return (
+            <div className="border">
+                <div className="list">
+	                <ul>
+	                	<li className="header">
+			                <h4>{uri[0]["header"]}</h4>
+			                <FormAddItem top={top} pk={pk} uri={uri[0]} />
+	               		</li>
+        				{perItemNodes}
+	                </ul>
+	            </div>
+            </div>
+        )
 	}
 }
 
@@ -80,7 +186,7 @@ class JobsList extends React.Component {
 		}
 		//bind functions in constructor where required:
 		this.loadJobsFromServer = this.loadJobsFromServer.bind(this);
-		this.addJob = this.addJob.bind(this);
+		//this.addItem = this.addItem.bind(this);
 	}
 
     loadJobsFromServer() {
@@ -94,12 +200,14 @@ class JobsList extends React.Component {
         })
     }
 
-    addJob(e) {
+    addItem(uri, e) {
     	e.preventDefault();
+    	var form = e.target;
+
     	$.ajax({
-    		url: this.props.url, // + 'add/',
+    		url: this.props.url + uri + '/', // + 'add/',
     		type: 'post',
-			data: $(this.addJobForm).serialize(),
+			data: $(form).serialize(),
     		datatype: 'json',
     		cache: false,
     		success: function(data) {
@@ -108,11 +216,11 @@ class JobsList extends React.Component {
     	})
     }
 
-    removeJob(id, e) {
-    	console.log('removing job ' + id);
+    removeItem(id, uri, e) {
+    	console.log('removing item ' + uri + ' @' + id);
     	e.preventDefault();
     	$.ajax({
-    		url: this.props.url + 'id/' + id,
+    		url: this.props.url + uri + '/' + id + '/',
     		type: 'delete',
     		cache: false,
     		success: function(data) {
@@ -129,27 +237,8 @@ class JobsList extends React.Component {
     }
 
     render() {
-        if (this.state.data) {
-        	var self = this;
-            var jobNodes = this.state.data.map(function(job){
-            	return (
-            		<JobRow key={job.id.toString()} jobObj={job} removeFn={self.removeJob.bind(self, job.id)} />
-            	)
-            })
-        }
-
         return (
-            <div>
-                <div className="header">
-	                <h1>Jobs</h1>
-	                <FormAddJob parent={this} />
-		        </div>
-                <div className="list">
-	                <ul>
-	                    {jobNodes}
-	                </ul>
-	            </div>
-            </div>
+        	<ItemNodes items={this.state.data} top={this} pk={-1} uri={MAPPING} />
         )
     }
 }

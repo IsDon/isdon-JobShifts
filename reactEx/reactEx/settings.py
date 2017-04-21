@@ -25,7 +25,7 @@ SECRET_KEY = 'dev_6ywhli9^98pkz7dl9u$g5vl!sns2^y$p2tdwgne28_z+qu6&8='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -82,6 +82,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'reactEx.wsgi.application'
 
+SITE_ID = 1
+
 AUTHENTICATION_BACKENDS = (
     'userena.backends.UserenaAuthenticationBackend',
     'guardian.backends.ObjectPermissionBackend',
@@ -92,7 +94,7 @@ ANONYMOUS_USER_ID = 1
 
 AUTH_PROFILE_MODULE = 'accounts.Profile'
 
-USERENA_SIGNIN_REDIRECT_URL = '/accounts/%(username)s/'
+USERENA_SIGNIN_REDIRECT_URL = '/' #'/accounts/%(username)s/'
 USERENA_ACTIVATION_REQUIRED = False
 USERENA_SIGNIN_AFTER_SIGNUP = True
 
@@ -132,6 +134,12 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.DjangoModelPermissions'
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -150,6 +158,55 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'timed': {
+            'format': '%(levelname)s %(asctime)s %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
+        'debug_file': {
+        #    'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'formatter': 'timed',
+            'filename': 'logs/debug.log',
+        },
+        'log_file':{
+        #    'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/slow_queries.log',
+            'maxBytes': 16777216, # 16megabytes
+            'formatter': 'timed'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['debug_file'],
+            'level': 'WARNING',
+            'propagate': True,
+        },
+    }
+}
 
 
 # Internationalization

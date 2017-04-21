@@ -13,9 +13,14 @@ urlpatterns = [
 
 	# AJAX API:
 
-	url(r'^api/$', views.JobList.as_view(), name='daily-list'),		#list (GET), add (PUT)
+	url(r'^api/$', views.JobList.as_view(), name='jobs-base'),		#list (GET), add (POST)
+	url(r'^api/id/$', views.JobList.as_view(), name='jobs-list'),		#list (GET), add (POST)
+	url(r'^api/shift/$', views.WorkShiftList.as_view(), name='shifts-list'),		#list (GET), add (POST)
+	url(r'^api/role/$', views.PositionList.as_view(), name='roles-list'),		#list (GET), add (POST)
 	#url(r'^api/add/$', views.AddJob, name='add-job'),
 	url(r'^api/id/(?P<pk>[0-9]+)/$', views.JobModify.as_view(), name='mod-job'),	#delete (DELETE), update (PUT), partial_update (PATCH), get (GET)
+	url(r'^api/shift/(?P<pk>[0-9]+)/$', views.WorkShiftModify.as_view(), name='mod-shift'),	#delete (DELETE), update (PUT), partial_update (PATCH), get (GET)
+	url(r'^api/role/(?P<pk>[0-9]+)/$', views.PositionModify.as_view(), name='mod-role'),	#delete (DELETE), update (PUT), partial_update (PATCH), get (GET)
 
 
 
