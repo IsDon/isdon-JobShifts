@@ -50,4 +50,4 @@ class Position(models.Model):
 		on_delete=models.SET_NULL)
 
 	def __str__(self):
-		return "%s - %s" % (self.role, self.StaffedBy.name)
+		return "%s" % (self.role)

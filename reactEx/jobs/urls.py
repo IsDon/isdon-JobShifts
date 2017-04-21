@@ -6,8 +6,8 @@ urlpatterns = [
     url(r'^$', views.home, name='jobs_home'),
     
     # Day View:
-    url(r'^daily/(?P<day_ts>\d{4}-\d{2}-\d{2})/$', views.daily, name='jobs_daily'),
-    url(r'^daily/(?P<dev_id>[0-9]+)/daily/(?P<day_ts>NEXT)/$', views.daily, name='jobs_daily_nextavail'),
+    #url(r'^daily/(?P<day_ts>\d{4}-\d{2}-\d{2})/$', views.daily, name='jobs_daily'),
+    #url(r'^daily/(?P<dev_id>[0-9]+)/daily/(?P<day_ts>NEXT)/$', views.daily, name='jobs_daily_nextavail'),
 
 
 

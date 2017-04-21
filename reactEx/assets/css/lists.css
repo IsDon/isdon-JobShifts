@@ -4,23 +4,23 @@ body {
   background-color: #66CCFF;
   font-family: sans-serif;
 }
-#container .header {
+#JobsAppContainer .header {
   position: relative;
 }
-#container .header input {
+#JobsAppContainer .header input {
   padding: 5px;
   font-size: 15px;
   width: 300px;
   margin-left:auto;
   border: 2px solid #FFF;
 }
-#container .header input[name^=time_] {
+#JobsAppContainer .header input[name^=time_] {
   width:152px;
 }
-#container .header input[name=name] {
+#JobsAppContainer .header input[name=name] {
   width:336px;
 }
-#container .header > form > button {
+#JobsAppContainer .header > form > button {
   float:right;
   padding: 5px;
   font-size: 15px;
@@ -29,57 +29,58 @@ body {
   color: #FFF;
   border: 2px solid #0066FF;
 }
-#container .header > form > button:hover {
+#JobsAppContainer .header > form > button:hover {
   background-color: #003399;
   border: 2px solid #003399;
   cursor: pointer;
 }
-#container h3, #container h4 {
+#JobsAppContainer h3, #JobsAppContainer h4 {
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
   margin-top: 4px;
   margin-bottom: 0.5em;
 }
-#container .header h4 {
+#JobsAppContainer .header h4 {
   margin-top:0;
   font-style: italic;
 }
 
-#container .list {
+#JobsAppContainer .list {
   width:100%;
   padding:0;
   margin:0;
 }
-#container .list ul {
+#JobsAppContainer .list ul {
   -webkit-padding-start: 0;
 }
-#container .list li {
+#JobsAppContainer .list > ul > li {
   list-style: none;
   border:1px solid grey;
   border-radius: 0;
   padding:8px;
   position: relative;
 }
-#container .list li:first-child{
+#JobsAppContainer .list > ul > li:first-child{
   border-radius: 8px 8px 0 0;
+  background-color: #CFF;
 }
-#container .list li:last-child{
+#JobsAppContainer .list > ul > li:last-child{
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-#container .list h3 > span:first-child + span {
-  position:relative;
-  left:2em;
+#JobsAppContainer .list h3 > span:first-child + span {
+/*  position:relative;
+  left:2em;*/
 }
-#container .list h3 > span:first-child + span::before {
-  content: '- ';
+#JobsAppContainer .list h3 > span:first-child + span::before {
+  content: ' - ';
 }
-#container .list li > button {
+#JobsAppContainer .list > ul > li > button {
   position:absolute;
   right:6px;
-  top:1px;
+  top:10px;
 }
-#container .list li > button {
+#JobsAppContainer .list > ul > li > button {
   padding: 3px;
   font-size: 8px;
   margin: 3px;
@@ -87,7 +88,7 @@ body {
   color: #FFF;
   border: 2px solid #FF0033;
 }
-#container .list li > button:hover {
+#JobsAppContainer .list > ul > li > button:hover {
   background-color: #991300;
   border: 2px solid #991300;
   cursor: pointer;

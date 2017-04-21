@@ -9,7 +9,7 @@ module.exports = {
     //the entry point we created earlier. Note that './' means 
     //your current directory. You don't have to specify the extension  now,
     //because you will specify extensions later in the `resolve` section
-    entry: './assets/js/index', 
+    entry: ['./assets/js/bootstrap-datetimepicker.min.js','./assets/js/index'], 
     
     output: {
         //where you want your compiled bundle to be stored
@@ -55,7 +55,14 @@ module.exports = {
                     modules: false, //true,
                     //localIdentName: '[name]__[local]___[hash:base64:5]'
                 }
-            }
+            },
+            // Bootstrap fonts:
+            // the url-loader uses DataUrls.
+            // the file-loader emits files.
+            {test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
+            {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
+            {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
+            {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'}
         ]
     },
     

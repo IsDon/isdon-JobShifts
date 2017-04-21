@@ -1,11 +1,13 @@
 import '../css/base.css'
 import '../css/lists.css'
-
-
+//import '../css/bootstrap-datetimepicker.css'
+ 
 var React = require('react')
 var ReactDOM = require('react-dom')
+//var booties = require("bootstrap-webpack")
+var moment = require('moment')
 
-var MAPPING = [
+var MAPPING = [ 
 		{'uri':'id',
 		'header':'Jobs',
 		'parentId' : '',
@@ -40,7 +42,7 @@ class ButtonRemoveItem extends React.Component {
 		return (
 			<button onClick={this.removeFn}>x</button>
 		)
-	}
+	} 
 }
 
 class FormAddItem extends React.Component {
@@ -236,6 +238,12 @@ class JobsList extends React.Component {
         //             this.props.pollInterval)
     }
 
+    componentDidUpdate() {
+        $('input[name^=time_]').datetimepicker({
+        	sideBySide: true
+        });
+    }
+
     render() {
         return (
         	<ItemNodes items={this.state.data} top={this} pk={-1} uri={MAPPING} />
@@ -246,4 +254,4 @@ class JobsList extends React.Component {
 
 
 ReactDOM.render(<JobsList url='/jobs/api/' pollInterval={20000} />, 
-    document.getElementById('container'))
+    document.getElementById('JobsAppContainer'))
