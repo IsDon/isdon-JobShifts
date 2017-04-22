@@ -8,18 +8,27 @@ var ReactDOM = require('react-dom')
 var moment = require('moment')
 
 var MAPPING = [ 
-		{'uri':'id',
-		'header':'Jobs',
-		'parentId' : '',
-		'fields': ['name']},
-		{'uri':'shift',
-		'header':'Shifts',
-		'parentId' : 'job',
-		'fields': ['time_start', 'time_end']},
-		{'uri':'role',
-		'header':'Positions',
-		'parentId' : 'workShift',
-		'fields': ['role']}
+		{
+			'uri':'id',
+			'header':'Jobs',
+			'parentId' : '',
+			'fields': ['name'],
+			'fields_input': ['name']
+		},
+		{
+			'uri':'shift',
+			'header':'Shifts',
+			'parentId' : 'job',
+			'fields': ['time_start', 'time_end'],
+			'fields_input': ['time_start', 'time_end']
+		},
+		{
+			'uri':'role',
+			'header':'Positions Required',
+			'parentId' : 'workShift',
+			'fields': ['role', 'get_status_display'],
+			'fields_input': ['role']
+		}
 	];
   
 class DjangoCSRFToken extends React.Component {
@@ -50,7 +59,7 @@ class FormAddItem extends React.Component {
 		super(props);
 		var top = this.props.top;
 		this.addItem = top.addItem.bind(top, this.props.uri['uri']);
-		this.fields = this.props.uri['fields'];
+		this.fields = this.props.uri['fields_input'];
 	}
 	
 	render() {			// ref={form => parent.addItemForm = form}	(using e.target)
@@ -164,9 +173,10 @@ class ItemNodes extends React.Component {
 	        	)
 	        })
     	}
+    	var listclasses = `list ${uri[0]["header"].split(" ")[0].toLowerCase()}`;
         return (
             <div className="border">
-                <div className="list">
+                <div className={listclasses}>
 	                <ul>
 	                	<li className="header">
 			                <h4>{uri[0]["header"]}</h4>

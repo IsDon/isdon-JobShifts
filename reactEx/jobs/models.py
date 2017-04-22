@@ -51,3 +51,23 @@ class Position(models.Model):
 
 	def __str__(self):
 		return "%s" % (self.role)
+
+class Response(models.Model):
+
+	position = models.ForeignKey( Position, 
+		db_index=True,
+		related_name="Response_Position",
+		related_query_name="Response_Position",
+		null=False,
+		on_delete=models.CASCADE)
+	status = 		models.IntegerField(choices=STATUS_RESPONSE_CHOICES, default=1)
+	message = 		models.TextField(max_length=500, blank=True)
+	staff = models.ForeignKey( User, 
+		db_index=True,
+		related_name="StaffResponse",
+		related_query_name="StaffResponse",
+		null=True, 
+		on_delete=models.SET_NULL)
+
+	def __str__(self):
+		return "%s" % (self.role)

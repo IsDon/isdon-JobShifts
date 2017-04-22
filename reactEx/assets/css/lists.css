@@ -1,7 +1,7 @@
 body {
   margin: auto;
   max-width:420px;
-  background-color: #66CCFF;
+  background-color: #FFF;
   font-family: sans-serif;
 }
 #JobsAppContainer .header {
@@ -9,7 +9,7 @@ body {
 }
 #JobsAppContainer .header input {
   padding: 5px;
-  font-size: 15px;
+  font-size: 12px;
   width: 300px;
   margin-left:auto;
   border: 2px solid #FFF;
@@ -22,8 +22,8 @@ body {
 }
 #JobsAppContainer .header > form > button {
   float:right;
-  padding: 5px;
-  font-size: 15px;
+  padding: 5px 10px;
+  font-size: 12px;
 /*  margin: 10px;*/
   background-color: #0066FF;
   color: #FFF;
@@ -39,6 +39,8 @@ body {
   -webkit-margin-after: 0;
   margin-top: 4px;
   margin-bottom: 0.5em;
+  font-size: 16px;
+  font-weight: bold;
 }
 #JobsAppContainer .header h4 {
   margin-top:0;
@@ -52,10 +54,12 @@ body {
 }
 #JobsAppContainer .list ul {
   -webkit-padding-start: 0;
+  border-color: inherit;
 }
 #JobsAppContainer .list > ul > li {
   list-style: none;
   border:1px solid grey;
+  border-color: inherit;
   border-radius: 0;
   padding:8px;
   position: relative;
@@ -68,17 +72,23 @@ body {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-#JobsAppContainer .list h3 > span:first-child + span {
-/*  position:relative;
-  left:2em;*/
+#JobsAppContainer .list.positions > ul > li >  h3 > span:first-child + span {
+  float:right;
+  padding-right:1.5em;
 }
-#JobsAppContainer .list h3 > span:first-child + span::before {
+#JobsAppContainer .list.positions > ul > li >  h3 > span:first-child + span::before {
+  content: '<';
+}
+#JobsAppContainer .list.positions > ul > li >  h3 > span:first-child + span::after {
+  content: '>';
+}
+#JobsAppContainer .list.shifts > ul > li > h3 > span:first-child + span::before {
   content: ' - ';
 }
 #JobsAppContainer .list > ul > li > button {
   position:absolute;
   right:6px;
-  top:10px;
+  top:8px;
 }
 #JobsAppContainer .list > ul > li > button {
   padding: 3px;
@@ -92,4 +102,13 @@ body {
   background-color: #991300;
   border: 2px solid #991300;
   cursor: pointer;
+}
+.list {
+  border-color: #AAEEFF;
+}
+.list .list {
+  border-color: #66CCFF;
+}
+.list .list .list {
+  border-color: #33AAFF;
 }

@@ -7,7 +7,7 @@ class PositionSerializer(serializers.ModelSerializer):
 	
 	class Meta:
 		model = Position
-		fields = ('id', 'workShift', 'role', 'status', 'staff_filling')
+		fields = ('id', 'workShift', 'role', 'status', 'get_status_display', 'staff_filling')
 		url = 'role'
 
 
