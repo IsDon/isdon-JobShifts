@@ -1,12 +1,14 @@
 from django.utils.translation import ugettext as _
 
 STATUS_POSITION_CHOICES = (
-    (1, _("Open")),
-    (2, _("Filled")),
+    (1, _("Pending")),
+    (2, _("Open")),
     (3, _("Inviting")),
     (4, _("Reviewing")),
-    (5, _("Cancelled"))
+    (5, _("Filled")),
+    (6, _("Cancelled"))
 )
+STATUS_POSITION_VISIBLE = [2, 3, 4]
 
 STATUS_RESPONSE_CHOICES = (
     (1, _("Reviewing")),
@@ -15,3 +17,4 @@ STATUS_RESPONSE_CHOICES = (
     (4, _("Unavailable")),
     (5, _("Cancelled"))
 )
+STATUS_RESPONSE_VISIBLE = [1, 2, 3, 4]

@@ -54,6 +54,8 @@ body {
 }
 #JobsAppContainer .list ul {
   -webkit-padding-start: 0;
+  -moz-padding-start: 0;
+  padding-left:0;
   border-color: inherit;
 }
 #JobsAppContainer .list > ul > li {
@@ -111,4 +113,8 @@ body {
 }
 .list .list .list {
   border-color: #33AAFF;
+}
+
+.pointer {
+  cursor:pointer;
 }

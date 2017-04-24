@@ -21,11 +21,15 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^forceadmin/$', views.home, {'forceadmin': 'true'}, name='force_admin'),
 
 
     # Staffer Views:
-    url(r'^jobs/', include('jobs.urls')),
+    url(r'^responses/', include('responses.urls')),
+    url(r'^forceadmin/responses/', include('responses.urls')),
     # Admin (Business Owner) Additional Views:
+    url(r'^jobs/', include('jobs.urls')),
+    url(r'^forceadmin/jobs/', include('jobs.urls')),
 
 
 

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"list",
+				"listclasses"
+			],
+			[
 				"boot",
 				"bootstrap-datetimepicker"
 			],
@@ -510,10 +514,6 @@
 			[
 				"clickM",
 				"clickMap"
-			],
-			[
-				"click",
-				"clickMarkers"
 			]
 		]
 	},
@@ -540,7 +540,16 @@
 			"file": "reactEx/jobs/models.py",
 			"settings":
 			{
-				"buffer_size": 1549,
+				"buffer_size": 2108,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "reactEx/jobs/choices.py",
+			"settings":
+			{
+				"buffer_size": 349,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -576,7 +585,7 @@
 			"file": "reactEx/assets/js/index.js",
 			"settings":
 			{
-				"buffer_size": 6025,
+				"buffer_size": 6283,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -594,7 +603,7 @@
 			"file": "reactEx/jobs/serializers.py",
 			"settings":
 			{
-				"buffer_size": 775,
+				"buffer_size": 797,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -603,19 +612,10 @@
 			"file": "reactEx/assets/css/lists.css",
 			"settings":
 			{
-				"buffer_size": 2002,
+				"buffer_size": 2467,
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
 				"name": "body {"
-			}
-		},
-		{
-			"file": "reactEx/reactEx/templates/reactEx/front.html",
-			"settings":
-			{
-				"buffer_size": 1219,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
 			}
 		}
 	],
@@ -656,12 +656,15 @@
 		"/E/development/isdon-react-ex/reactEx/assets/css",
 		"/E/development/isdon-react-ex/reactEx/assets/js",
 		"/E/development/isdon-react-ex/reactEx/jobs",
+		"/E/development/isdon-react-ex/reactEx/logs",
 		"/E/development/isdon-react-ex/reactEx/reactEx",
 		"/E/development/isdon-react-ex/reactEx/reactEx/templates",
 		"/E/development/isdon-react-ex/reactEx/reactEx/templates/reactEx"
 	],
 	"file_history":
 	[
+		"/E/development/isdon-react-ex/reactEx/logs/debug.log",
+		"/E/development/isdon-react-ex/reactEx/reactEx/templates/reactEx/front.html",
 		"/E/development/isdon-react-ex/reactEx/jobs/admin.py",
 		"/E/development/isdon-react-ex/reactEx/reactEx/urls.py",
 		"/E/development/isdon-react-ex/reactEx/jobs/urls.py",
@@ -669,7 +672,6 @@
 		"/E/development/isdon-react-ex/reactEx/reactEx/templates/reactEx/dayview.html",
 		"/E/development/isdon-shopping/reactEx/package.json",
 		"/E/development/isdon-react-ex/reactEx/assets/css/base.css",
-		"/E/development/isdon-react-ex/reactEx/logs/debug.log",
 		"/E/development/isdon-react-ex/reactEx/package.json",
 		"/E/development/isdon-react-ex/.gitignore",
 		"/E/development/isdon-react-ex/reactEx/webpack.config.js",
@@ -788,8 +790,7 @@
 		"/C/Users/IsDon/AppData/Local/Temp/fz3temp-3/worker.py",
 		"/C/Users/IsDon/AppData/Local/Temp/fz3temp-3/error_sfsandbox.log",
 		"/C/Users/IsDon/AppData/Local/Temp/fz3temp-3/models.py",
-		"/E/development/isdon-foal/logs/django.log",
-		"/E/development/isdon-foal_prod/compare/sfsandbox/sfbackend/DjangoWebProject/settings.py"
+		"/E/development/isdon-foal/logs/django.log"
 	],
 	"find":
 	{
@@ -1053,7 +1054,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1081,7 +1082,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -1097,8 +1098,8 @@
 						"selection":
 						[
 							[
-								613,
-								613
+								1020,
+								1020
 							]
 						],
 						"settings":
@@ -1109,7 +1110,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1118,15 +1119,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1549,
+						"buffer_size": 2108,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								775,
-								598
+								681,
+								681
 							]
 						],
 						"settings":
@@ -1138,11 +1139,41 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
+					"file": "reactEx/jobs/choices.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 349,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								198,
+								221
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "reactEx/jobs/views.py",
 					"semi_transient": false,
 					"settings":
@@ -1154,8 +1185,8 @@
 						"selection":
 						[
 							[
-								708,
-								708
+								984,
+								984
 							]
 						],
 						"settings":
@@ -1163,21 +1194,21 @@
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "reactEx/jobs/tests.py",
 					"semi_transient": false,
 					"settings":
@@ -1205,7 +1236,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "reactEx/reactEx/settings.py",
 					"semi_transient": false,
 					"settings":
@@ -1231,24 +1262,24 @@
 						"translation.y": 1699.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "reactEx/assets/js/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6025,
+						"buffer_size": 6283,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1961,
-								1961
+								1390,
+								1390
 							]
 						],
 						"settings":
@@ -1256,14 +1287,14 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 747.0,
+						"translation.y": 720.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "reactEx/webpack.config.js",
 					"semi_transient": false,
 					"settings":
@@ -1289,24 +1320,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "reactEx/jobs/serializers.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 775,
+						"buffer_size": 797,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								224,
-								224
+								797,
+								797
 							]
 						],
 						"settings":
@@ -1318,24 +1349,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "reactEx/assets/css/lists.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2002,
+						"buffer_size": 2467,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2002,
-								2002
+								486,
+								486
 							]
 						],
 						"settings":
@@ -1349,37 +1380,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "reactEx/reactEx/templates/reactEx/front.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1219,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								205,
-								205
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1451,7 +1452,7 @@
 		[
 			[
 				"",
-				"E:\\development\\Foal_app.sublime-project"
+				"E:\\development\\isdon-shopping\\shopping_project.sublime-project"
 			]
 		],
 		"width": 616.0
@@ -1465,7 +1466,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

@@ -24,9 +24,14 @@
         <![endif]-->
 
         <h2>Job Scheduling and Filling App</h2>
-        
-        <div id="JobsAppContainer">
+
+        {% if request.user.is_staff or forceadmin %}
+        <div id="JobsAppContainer" class="admin">
         </div>
+        {% else %}
+        <div id="JobsAppContainer" class="responder">
+        </div>
+        {% endif %}
 
         {% render_bundle 'main' %}
     </body>

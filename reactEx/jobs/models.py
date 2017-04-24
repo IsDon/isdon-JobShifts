@@ -22,8 +22,8 @@ class WorkShift(models.Model):
 
 	job = models.ForeignKey( Job, 
 		db_index=True,
-        related_name="Job_Shift",
-        related_query_name="Job_Shift",
+        related_name="JobShift",
+        related_query_name="JobShift",
         null=False,
         on_delete=models.CASCADE)
 	time_start =  	models.DateTimeField(db_index=True, unique=False)
@@ -36,8 +36,8 @@ class Position(models.Model):
 
 	workShift = models.ForeignKey( WorkShift, 
 		db_index=True,
-		related_name="Shift_Position",
-		related_query_name="Shift_Position",
+		related_name="ShiftPosition",
+		related_query_name="ShiftPosition",
 		null=False,
 		on_delete=models.CASCADE)
 	role =			models.CharField(db_index=True, unique=False, max_length=20)
@@ -46,26 +46,6 @@ class Position(models.Model):
 		db_index=True,
 		related_name="StaffedBy",
 		related_query_name="StaffedBy",
-		null=True, 
-		on_delete=models.SET_NULL)
-
-	def __str__(self):
-		return "%s" % (self.role)
-
-class Response(models.Model):
-
-	position = models.ForeignKey( Position, 
-		db_index=True,
-		related_name="Response_Position",
-		related_query_name="Response_Position",
-		null=False,
-		on_delete=models.CASCADE)
-	status = 		models.IntegerField(choices=STATUS_RESPONSE_CHOICES, default=1)
-	message = 		models.TextField(max_length=500, blank=True)
-	staff = models.ForeignKey( User, 
-		db_index=True,
-		related_name="StaffResponse",
-		related_query_name="StaffResponse",
 		null=True, 
 		on_delete=models.SET_NULL)
 

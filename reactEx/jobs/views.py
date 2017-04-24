@@ -7,6 +7,7 @@ from django.utils import timezone
 from django.forms.models import modelformset_factory
 from django.core.exceptions import ObjectDoesNotExist
 
+
 from .models import Job, WorkShift, Position
 from .serializers import JobSerializer, WorkShiftSerializer, PositionSerializer
 
@@ -16,6 +17,12 @@ def home(request):
 	response = render(request, 'reactEx/front.html')
 
 	return response
+
+
+def latest_set(request):
+
+	return JobList.as_view()(request)
+
 
 
 # Day layout:
@@ -39,6 +46,18 @@ def home(request):
 # 	filter_backends = (OrderingFilter,)
 # 	ordering_fields = ('username', 'email')
 
+#@login_required	(staff required?)
+def PositionOpen(request, pk):
+	# set a role as <OPEN> (STATUS_POSITION_CHOICES.Open)
+	try:
+		pos = Position.objects.get(id=pk)
+	except Positon.DoesNotExist as e:
+		return latest_set(request)
+
+	pos.status = 2
+	pos.save()
+
+	return latest_set(request)
 
 
 
