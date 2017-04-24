@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 from django.http import HttpResponse, HttpResponseForbidden, JsonResponse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 from jobs.models import Job, WorkShift, Position
 from jobs.choices import *
@@ -23,19 +24,40 @@ def latest_set(request):
 	return ResponseJobList.as_view()(request)
 
 # AJAX views:
-def PositionAccept(request, pk):
+def PositionAccept(request, pk, user=None):
 
-	# accept response - add new response(user, position=pk):
+	# accept response - add new response(user, position=pk, status=AVAILABLE):
+	STATUS = 3
 	try:
 		pos = Position.objects.get(id=pk)
-	except Positon.DoesNotExist as e:
+	except Position.DoesNotExist as e:
 		return latest_set(request)
 
-	req = Response.objects.create(position=pos, staff=request.user, status=3, message="default")
+	try:
+		req = Response.objects.get(position=pos, staff=request.user)
+		req.status=STATUS
+		req.save()
+	except Response.DoesNotExist as e:
+		req = Response.objects.create(position=pos, staff=request.user, status=STATUS, message="default")
 
 	return latest_set(request)
 
+
 def PositionRevoke(request, pk):
+
+	# remove acceptance response - add new response(user, position=pk, status=UNAVAILABLE):
+	STATUS = 4
+	try:
+		req = Response.objects.get(id=pk)
+		if(req.status==STATUS):
+			req.delete()
+		else:
+			req.status=STATUS
+			req.save()
+	except Response.DoesNotExist as e:
+		print('No Response found in Revoke')
+		print(str(e))
+		req = Response.objects.create(position=pos, staff=request.user, status=STATUS, message="default")
 
 	return latest_set(request)
 
@@ -58,8 +80,8 @@ class ResponseJobList(generics.ListAPIView):
 	# for user, return jobs, shifts, positions open OR user.accepted:
 		"""
 		user = self.request.user
-		filterPositions = Position.objects.filter(staff_filling_id=user.id).filter(
-			status__in=STATUS_POSITION_VISIBLE)
+		filterPositions = Position.objects.filter(Q(staff_filling_id=user.id) | Q(
+			status__in=STATUS_POSITION_VISIBLE))
 		filterWorkShifts = WorkShift.objects.filter(ShiftPosition__in=filterPositions)
 		return Job.objects.filter(JobShift__in=filterWorkShifts)
 		# filterPositions = Position.objects.filter(staff_filling_id=user.id).filter(
@@ -73,7 +95,7 @@ class ResponseJobList(generics.ListAPIView):
 # 	queryset = WorkShift.objects.all()
 # 	serializer_class = WorkShiftSerializer
 
-class ResponsePositionList(generics.ListAPIView):
-	permission_classes = (AllowAny,)
-	queryset = Position.objects.filter(status__in=STATUS_POSITION_VISIBLE)
-	serializer_class = filteredPositionSerializer
+# class ResponsePositionList(generics.ListAPIView):
+# 	permission_classes = (AllowAny,)
+# 	queryset = Position.objects.filter(status__in=STATUS_POSITION_VISIBLE)
+# 	serializer_class = filteredPositionSerializer

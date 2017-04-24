@@ -6,10 +6,11 @@ var ReactDOM = require('react-dom')
 //var booties = require("bootstrap-webpack")
 var moment = require('moment')
 
-function Action(uri, type='normal', action='post') {
+function Action(uri, type='normal', action='get', tooltip='') {
     this.uri=uri;
     this.type=type;
     this.action=action;
+    this.tooltip=tooltip;
 }
 var MAPPING_Admin = [
         {
@@ -37,7 +38,7 @@ var MAPPING_Admin = [
             'header':'Positions Required',
             'remove':new Action('role'),
             'add':new Action('role'),
-            'click':new Action('jobs/api/role/open','modal','patch'),
+            'click':new Action('jobs/api/role/open','modal','patch', 'Open for Filling'),
             'parentId' : 'workShift',
             'fields': ['role', 'get_status_display'],
             'fields_input': ['role']
@@ -80,17 +81,17 @@ var MAPPING_ShiftWorker = [
             'header':'Positions Required',
             'remove':false,
             'add':false,
-            'click':new Action('responses/api/accept','modal','patch'),
+            'click':new Action('responses/api/accept','modal','patch', 'Mark as Available'),
             'parentId' : 'workShift',
             'fields': ['role', 'get_status_display'],
             'fields_input': ['role']
         },
         {
             'uri':'',
-            'header':'Staff Responses',
+            'header':'Responses',
             'remove':false,
             'add':false,
-            'click':false,
+            'click':new Action('responses/api/revoke','modal','patch', 'Remove Availability'),
             'parentId' : 'role',
             'fields': ['staff_name', 'get_status_display'],
             'fields_input': []
@@ -168,7 +169,7 @@ class ItemRow extends React.Component {
     render() {
         let item = this.props.obj;
         let next_list;
-        if((item.subList && item.subList.length) || this.props.uri[1]['add']) {
+        if((item.subList && item.subList.length) || (this.props.uri.length>1 && this.props.uri[1]['add'])) {
             next_list = <ItemNodes 
                 items={item.subList} 
                 uri={this.props.uri.slice(1)} 
@@ -213,9 +214,10 @@ class ItemRow extends React.Component {
                 item.id, 
                 this.props.uri[0]['click']
             );
+            var clickTooltip = this.props.uri[0]['click']['tooltip'];
             return (
                 <li key={item.id.toString()}>
-                    <h3 onClick={clickFn} className="pointer">
+                    <h3 onClick={clickFn} className="pointer" title={clickTooltip}>
                         {cur_heading}
                     </h3>
                     {formRemoveButton}

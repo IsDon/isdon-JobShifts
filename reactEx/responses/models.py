@@ -24,5 +24,9 @@ class Response(models.Model):
 		null=True, 
 		on_delete=models.SET_NULL)
 
+	@property
+	def staff_name(self):
+		return self.staff.get_username()
+
 	def __str__(self):
-		return "%s" % (self.role)
+		return "%s" % (self.status)

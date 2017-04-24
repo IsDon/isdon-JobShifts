@@ -74,7 +74,8 @@ body {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-#JobsAppContainer .list.positions > ul > li >  h3 > span:first-child + span {
+#JobsAppContainer .list.positions > ul > li >  h3 > span:first-child + span,
+#JobsAppContainer .list.staff > ul > li >  h3 > span:first-child + span {
   float:right;
   padding-right:1.5em;
 }

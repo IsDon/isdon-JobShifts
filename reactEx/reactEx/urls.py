@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
 from django.contrib.sites.models import Site
 
 from . import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
-    url(r'^forceadmin/$', views.home, {'forceadmin': 'true'}, name='force_admin'),
+
 
 
     # Staffer Views:
@@ -53,6 +54,21 @@ urlpatterns = [
 #windows environment static server:
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns += staticfiles_urlpatterns()
+
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
+    urlpatterns = [
+        url(r'^forceadmin/$', views.home, {'forceadmin': 'true'}, name='force_admin'),
+        url(r'^forceadmin/responses/', include('responses.urls')),
+        url(r'^mockuser/(?P<user>[0-9]+)/responses', include('responses.urls'), name='mockuser'),
+    ] + urlpatterns
+
+
+
 
 admin.autodiscover()
 admin.site.unregister(Site)
