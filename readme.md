@@ -1,5 +1,5 @@
-# isdon-shopping
-Contract / Casual Staff Shift Filling application base in Django / React
+# isdon-JobShifts
+### Contract / Casual Staff Shift Filling application base in Django / React
 
 This is a simple first pass at a tiered list (nested queries) which allows adding Jobs, Shifts per Job, Positions/Roles per Shift and then opening them up (smartphone/email notifications eventually) for Staff to verify Availability then Admin Staff auto-fill or chose which staff to fill each slot (not implemented), built as a few seperate django apps for interchangeability of each part.
 
