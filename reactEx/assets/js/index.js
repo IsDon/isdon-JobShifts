@@ -6,12 +6,18 @@ var ReactDOM = require('react-dom')
 //var booties = require("bootstrap-webpack")
 var moment = require('moment')
 
+
+// Utility Definitions:
+
 function Action(uri, type='normal', action='get', tooltip='') {
     this.uri=uri;
     this.type=type;
     this.action=action;
     this.tooltip=tooltip;
 }
+
+//View definitions: 
+//TODO - refactor, standardise names/layout of data:
 var MAPPING_Admin = [
         {
             'uri':'id',
@@ -98,6 +104,8 @@ var MAPPING_ShiftWorker = [
         }
     ];
 
+// Utility Functions: 
+
 class DjangoCSRFToken extends React.Component {
   render() {
     var csrfToken = Django.csrf_token();
@@ -106,6 +114,12 @@ class DjangoCSRFToken extends React.Component {
     );
   }
 }
+
+function CSRF_val() {
+    return $(":input[name='csrfmiddlewaretoken']").val();
+}
+
+// Component Utility Nodes:
 
 class ButtonRemoveItem extends React.Component {
     constructor(props) {
@@ -120,7 +134,6 @@ class ButtonRemoveItem extends React.Component {
         )
     } 
 }
-
 class FormAddItem extends React.Component {
     constructor(props) {
         super(props);
@@ -132,10 +145,17 @@ class FormAddItem extends React.Component {
     render() {          // ref={form => parent.addItemForm = form}  (using e.target)
         var add_str = "add " + this.props.uri['header'];
         var perFieldInputs = this.fields.map(function(item, index){
+            // let type;
+            // if(item.substr(0,5)=="time_") {
+            //     type = "datetime-local"
+            // } else {
+            //     type = "text"
+            // }
             return (
                 <input 
                     name={item} 
                     key={index} 
+                    // type={type}
                     placeholder={item.replace('_', ' ').toLowerCase().replace(/(^| )(\w)/g, s => s.toUpperCase())}>
                 </input>
             )
@@ -159,6 +179,9 @@ class FormAddItem extends React.Component {
         )
     }
 }
+
+// Component Nesting Row / List Node Definitions: 
+// (General, with passed definitions)
 
 class ItemRow extends React.Component {
     constructor(props) {
@@ -278,6 +301,8 @@ class ItemNodes extends React.Component {
     }
 }
 
+// Root Component for List Setup:
+
 class ItemList extends React.Component {
     constructor(props) {
         super(props);
@@ -319,9 +344,13 @@ class ItemList extends React.Component {
     removeItem(id, uri, e) {
         console.log('removing item ' + uri + ' @' + id);
         e.preventDefault();
+        //var csrfToken = Django.csrf_token();
+        // var data_csrf = {};
+        // data_csrf["csrfmiddlewaretoken"]=csrfToken;
         $.ajax({
             url: this.props.url + uri + '/' + id + '/',
             type: 'delete',
+            //data: data_csrf,
             cache: false,
             success: function(data) {
                 this.loadDataFromServer();
@@ -332,9 +361,9 @@ class ItemList extends React.Component {
     handleClick(id, action, e) {
         console.log('click action');
         e.preventDefault();
-        var csrfToken = Django.csrf_token();
-        var data_csrf = {};
-        data_csrf["csrfmiddlewaretoken"]=csrfToken;
+        // var csrfToken = Django.csrf_token();
+        // var data_csrf = {};
+        // data_csrf["csrfmiddlewaretoken"]=csrfToken;
         $.ajax({
             url: action.uri + '/' + id + '/',
             type: 'get', // action.action,
@@ -350,13 +379,14 @@ class ItemList extends React.Component {
     componentDidMount() {
         this.loadDataFromServer();
 //SETUP: If handling multiple users, enable polling:
-        // setInterval(this.loadDataFromServer, 
-        //             this.props.pollInterval)
+        setInterval(this.loadDataFromServer, 
+                    this.props.pollInterval)
     }
 
     componentDidUpdate() {
         $('input[name^=time_]').datetimepicker({
-            sideBySide: true
+            sideBySide: false,
+            format:'YYYY-MM-DDThh:mm',
         });
     }
 
@@ -367,11 +397,27 @@ class ItemList extends React.Component {
     }
 }
 
-var app_root = document.getElementById('JobsAppContainer');
+//Start React Application based on classname in root Django template:
+
+var app_root = $('#JobsAppContainer');
 if($(app_root).hasClass('admin')) {
-    ReactDOM.render(<ItemList url='/jobs/api/' pollInterval={10000} map={MAPPING_Admin} />, 
+    ReactDOM.render(<ItemList url='jobs/api/' pollInterval={2000} map={MAPPING_Admin} />, 
         document.getElementById('JobsAppContainer'))
 } else {
-    ReactDOM.render(<ItemList url='/responses/api/' pollInterval={30000} map={MAPPING_ShiftWorker} />, 
+    ReactDOM.render(<ItemList url='responses/api/' pollInterval={2000} map={MAPPING_ShiftWorker} />, 
         document.getElementById('JobsAppContainer'))
 }
+
+//Django CRSF Setup as Ajax Generic beforeSend:
+
+var csrfSafeMethod = function(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", CSRF_val());
+        }
+    }
+});

@@ -2,52 +2,56 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import HttpResponse, JsonResponse
 from rest_framework.renderers import JSONRenderer
+from django.conf import settings
 from rest_framework import viewsets
 from django.utils import timezone
 from django.forms.models import modelformset_factory
 from django.core.exceptions import ObjectDoesNotExist
 
 
+from django.contrib.auth.models import User
 from .models import Job, WorkShift, Position
 from .serializers import JobSerializer, WorkShiftSerializer, PositionSerializer
 
 # Base Views:
-def home(request):
+def base(request, forceadmin=False, userid=None):
 
-	response = render(request, 'reactEx/front.html')
+	u=get_user(request, userid)
+	if(u.is_staff):
+		forceadmin = True
+	
+	response = render(request, 'reactEx/front.html', {"forceadmin":forceadmin, "userid":u.id, "name":u.username})
 
 	return response
 
 
-def latest_set(request):
 
+def latest_set(request):
 	return JobList.as_view()(request)
 
 
+#Allow for mock user id's with custom (DEBUG=True) URLS:
+def get_user(request, userid=None):
 
-# Day layout:
+	u=request.user
 
-# def daily(request):
+	if(settings.DEBUG):
+	
+		try:
+			if(userid):
+				u = User.objects.get(pk=userid)
+		except User.DoesNotExist:
+			pass
 
-# 	response = render(request, 'reactEx/dayview.html')
-
-# 	return response
-
+	return u
 
 
 
 
 # AJAX functions:
-# from rest_framework.filters import OrderingFilter
-
-# class JobListViewSet(viewsets.ModelViewSet):
-# 	queryset = Job.objects.all()
-# 	serializer_class = JobSerializer
-# 	filter_backends = (OrderingFilter,)
-# 	ordering_fields = ('username', 'email')
 
 #@login_required	(staff required?)
-def PositionOpen(request, pk):
+def PositionOpen(request, pk, userid=None):
 	# set a role as <OPEN> (STATUS_POSITION_CHOICES.Open)
 	try:
 		pos = Position.objects.get(id=pk)

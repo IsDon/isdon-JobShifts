@@ -52,6 +52,7 @@ bundles/
 db.*
 1.4.6*
 *.log
+*.sublime*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

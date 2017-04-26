@@ -3,8 +3,8 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse, HttpResponseForbidden
 from django.contrib.auth.decorators import login_required
 
-def home(request, forceadmin=False):
+from jobs.views import get_user, base
 
-	response = render(request, 'reactEx/front.html', {"forceadmin":forceadmin})
+def home(request, forceadmin=False, userid=None):
 
-	return response
+	return base(request, forceadmin=forceadmin, userid=userid)

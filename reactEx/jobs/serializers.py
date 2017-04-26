@@ -21,7 +21,6 @@ class PositionSerializer(serializers.ModelSerializer):
 		fields = ('id', 'workShift', 'role', 'status', 'get_status_display', 'staff_filling', 'subList')
 		url = 'role'
 
-
 class WorkShiftSerializer(serializers.ModelSerializer):
 	subList = PositionSerializer(many=True, source='ShiftPosition', read_only=True)
 	
@@ -29,7 +28,6 @@ class WorkShiftSerializer(serializers.ModelSerializer):
 		model = WorkShift
 		fields = ('id', 'job', 'time_start', 'time_end', 'subList')
 		url = 'shift'
-
 
 class JobSerializer(serializers.ModelSerializer):
 	subList = WorkShiftSerializer(many=True, source='JobShift', read_only=True)
@@ -39,20 +37,26 @@ class JobSerializer(serializers.ModelSerializer):
 		fields = ('id', 'name', 'desc', 'location', 'subList')
 
 
-# Add a filter for Contractors to only see relevent data to themself (user) and open slots:
+
+# Add a filter for Contractors to only see relevent data to themself (user) and open positions:
 class FilteredResponseListSerializer(serializers.ListSerializer):
 
 	def to_representation(self, data):
-		user = self.context['request'].user
+		#user = self.context['request'].user
+		user = self.context['format']['user']
+
 		data = data.filter(
 			Q(staff_id=user.id)
 		)
 		return super(FilteredResponseListSerializer, self).to_representation(data)
 
+# Add a filter for Contractors to only see relevent data to themself (user) and open positions:
 class FilteredPositionListSerializer(serializers.ListSerializer):
 
 	def to_representation(self, data):
-		user = self.context['request'].user
+		#user = self.context['request'].user
+		user = self.context['format']['user']
+
 		data = data.filter(
 			Q(staff_filling_id=user.id) | 
 			Q(status__in=STATUS_POSITION_VISIBLE)
@@ -73,7 +77,6 @@ class filteredPositionSerializer(PositionSerializer):
 
 class filteredWorkShiftSerializer(WorkShiftSerializer):
 	subList = filteredPositionSerializer(many=True, source='ShiftPosition', read_only=True)
-
 
 
 class filteredJobSerializer(JobSerializer):

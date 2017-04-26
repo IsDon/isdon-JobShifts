@@ -14,7 +14,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Job Scheduling App</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
@@ -24,12 +24,16 @@
         <![endif]-->
 
         <h2>Job Scheduling and Filling App</h2>
+        <h3>Logged in as {{name}}</h3>
+        {% csrf_token %}
 
-        {% if request.user.is_staff or forceadmin %}
+        {% if forceadmin %}
+        <p>Please select shifts to request staff availability</p>
         <div id="JobsAppContainer" class="admin">
         </div>
         {% else %}
-        <div id="JobsAppContainer" class="responder">
+        <p>Please select shifts where you are available</p>
+        <div id="JobsAppContainer" class="responder" data-user={{user}}>
         </div>
         {% endif %}
 

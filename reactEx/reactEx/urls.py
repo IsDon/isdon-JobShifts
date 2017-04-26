@@ -27,10 +27,8 @@ urlpatterns = [
 
     # Staffer Views:
     url(r'^responses/', include('responses.urls')),
-    url(r'^forceadmin/responses/', include('responses.urls')),
     # Admin (Business Owner) Additional Views:
     url(r'^jobs/', include('jobs.urls')),
-    url(r'^forceadmin/jobs/', include('jobs.urls')),
 
 
 
@@ -64,7 +62,10 @@ if settings.DEBUG:
     urlpatterns = [
         url(r'^forceadmin/$', views.home, {'forceadmin': 'true'}, name='force_admin'),
         url(r'^forceadmin/responses/', include('responses.urls')),
-        url(r'^mockuser/(?P<user>[0-9]+)/responses', include('responses.urls'), name='mockuser'),
+        url(r'^forceadmin/jobs/', include('jobs.urls')),
+        url(r'^mockuser/(?P<userid>[0-9]+)/$', views.home, name='mockuser'),
+        url(r'^mockuser/(?P<userid>[0-9]+)/responses/', include('responses.urls')),
+        url(r'^mockuser/(?P<userid>[0-9]+)/jobs/', include('jobs.urls')),
     ] + urlpatterns
 
 

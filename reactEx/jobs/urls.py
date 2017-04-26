@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
 	# base url
-    url(r'^$', views.home, name='jobs_home'),
+    url(r'^$', views.base, name='jobs_home'),
     
     # Day View:
     #url(r'^daily/(?P<day_ts>\d{4}-\d{2}-\d{2})/$', views.daily, name='jobs_daily'),
@@ -14,7 +14,8 @@ urlpatterns = [
 	# AJAX API:
 
 	url(r'^api/$', views.JobList.as_view(), name='jobs-base'),		#list (GET), add (POST)
-	url(r'^api/id/$', views.JobList.as_view(), name='jobs-list'),		#list (GET), add (POST)
+	url(r'^api/id/$', views.JobList.as_view()),		#list (GET), add (POST)
+	url(r'^api/job/$', views.JobList.as_view(), name='jobs-list'),		#list (GET), add (POST)
 	url(r'^api/shift/$', views.WorkShiftList.as_view(), name='shifts-list'),		#list (GET), add (POST)
 	url(r'^api/role/$', views.PositionList.as_view(), name='roles-list'),		#list (GET), add (POST)
 	#url(r'^api/add/$', views.AddJob, name='add-job'),

@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"for",
+				"forceadmin"
+			],
+			[
+				"u",
+				"get_user"
+			],
+			[
+				"Response",
+				"Responses"
+			],
+			[
+				"filter",
+				"filterPositions"
+			],
+			[
+				"Work",
+				"WorkShift"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"MAPPIN",
+				"MAPPING_ShiftWorker"
+			],
+			[
 				"list",
 				"listclasses"
 			],
@@ -62,10 +90,6 @@
 			[
 				"Pos",
 				"PositionSerializer"
-			],
-			[
-				"Work",
-				"WorkShiftSerializer"
 			],
 			[
 				"lying",
@@ -316,10 +340,6 @@
 				"timeprev"
 			],
 			[
-				"for",
-				"force_reload"
-			],
-			[
 				"load",
 				"_loader"
 			],
@@ -494,62 +514,25 @@
 			[
 				"mouse",
 				"mouseenter"
-			],
-			[
-				"where_s",
-				"where_sb_autocomplete"
-			],
-			[
-				"meal_v",
-				"meal_val2"
-			],
-			[
-				"markers",
-				"markers_pagedRows"
-			],
-			[
-				"lat",
-				"latlng1"
-			],
-			[
-				"clickM",
-				"clickMap"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "reactEx/reactEx/views.py",
-			"settings":
-			{
-				"buffer_size": 308,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "reactEx/accounts/models.py",
 			"settings":
 			{
-				"buffer_size": 1020,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "reactEx/jobs/models.py",
-			"settings":
-			{
-				"buffer_size": 2108,
+				"buffer_size": 1021,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "reactEx/jobs/choices.py",
+			"file": "reactEx/reactEx/views.py",
 			"settings":
 			{
-				"buffer_size": 349,
+				"buffer_size": 364,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -558,7 +541,43 @@
 			"file": "reactEx/jobs/views.py",
 			"settings":
 			{
-				"buffer_size": 2056,
+				"buffer_size": 2810,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "reactEx/responses/views.py",
+			"settings":
+			{
+				"buffer_size": 3442,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "reactEx/responses/urls.py",
+			"settings":
+			{
+				"buffer_size": 602,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "reactEx/jobs/urls.py",
+			"settings":
+			{
+				"buffer_size": 1414,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "reactEx/reactEx/urls.py",
+			"settings":
+			{
+				"buffer_size": 2075,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -573,28 +592,28 @@
 			}
 		},
 		{
-			"file": "reactEx/reactEx/settings.py",
-			"settings":
-			{
-				"buffer_size": 5870,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "reactEx/assets/js/index.js",
 			"settings":
 			{
-				"buffer_size": 6283,
+				"buffer_size": 11557,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "reactEx/webpack.config.js",
+			"file": "reactEx/reactEx/settings.py",
 			"settings":
 			{
-				"buffer_size": 2878,
+				"buffer_size": 5999,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "reactEx/jobs/models.py",
+			"settings":
+			{
+				"buffer_size": 1546,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -603,8 +622,25 @@
 			"file": "reactEx/jobs/serializers.py",
 			"settings":
 			{
-				"buffer_size": 797,
+				"buffer_size": 2646,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "reactEx/reactEx/templates/reactEx/front.html",
+			"settings":
+			{
+				"buffer_size": 1439,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "reactEx/logs/debug.log",
+			"settings":
+			{
+				"buffer_size": 293508,
 				"line_ending": "Windows"
 			}
 		},
@@ -612,7 +648,7 @@
 			"file": "reactEx/assets/css/lists.css",
 			"settings":
 			{
-				"buffer_size": 2467,
+				"buffer_size": 2614,
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
 				"name": "body {"
@@ -626,12 +662,16 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 35.0,
-		"last_filter": "",
+		"height": 392.0,
+		"last_filter": "Package Control: ",
 		"selected_items":
 		[
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			]
 		],
-		"width": 416.0
+		"width": 400.0
 	},
 	"console":
 	{
@@ -652,6 +692,7 @@
 	"expanded_folders":
 	[
 		"/E/development/isdon-react-ex/reactEx",
+		"/E/development/isdon-react-ex/reactEx/accounts",
 		"/E/development/isdon-react-ex/reactEx/assets",
 		"/E/development/isdon-react-ex/reactEx/assets/css",
 		"/E/development/isdon-react-ex/reactEx/assets/js",
@@ -659,23 +700,28 @@
 		"/E/development/isdon-react-ex/reactEx/logs",
 		"/E/development/isdon-react-ex/reactEx/reactEx",
 		"/E/development/isdon-react-ex/reactEx/reactEx/templates",
-		"/E/development/isdon-react-ex/reactEx/reactEx/templates/reactEx"
+		"/E/development/isdon-react-ex/reactEx/reactEx/templates/reactEx",
+		"/E/development/isdon-react-ex/reactEx/responses"
 	],
 	"file_history":
 	[
-		"/E/development/isdon-react-ex/reactEx/logs/debug.log",
-		"/E/development/isdon-react-ex/reactEx/reactEx/templates/reactEx/front.html",
-		"/E/development/isdon-react-ex/reactEx/jobs/admin.py",
-		"/E/development/isdon-react-ex/reactEx/reactEx/urls.py",
+		"/E/development/isdon-react-ex/reactEx/responses/models.py",
+		"/E/development/isdon-react-ex/reactEx/readme.md",
+		"/E/development/isdon-react-ex/reactEx/jobs/choices.py",
 		"/E/development/isdon-react-ex/reactEx/jobs/urls.py",
+		"/E/development/isdon-react-ex/reactEx/webpack.config.js",
+		"/E/development/isdon-react-ex/reactEx/jobs/serializers.py",
+		"/E/development/isdon-react-ex/reactEx/reactEx/urls.py",
+		"/E/development/isdon-react-ex/reactEx/reactEx/templates/reactEx/front.html",
+		"/E/development/isdon-react-ex/reactEx/reactEx/settings.py",
+		"/E/development/isdon-react-ex/reactEx/logs/debug.log",
+		"/E/development/isdon-react-ex/reactEx/jobs/admin.py",
 		"/E/development/isdon-react-ex/reactEx/jobs/forms.py",
 		"/E/development/isdon-react-ex/reactEx/reactEx/templates/reactEx/dayview.html",
 		"/E/development/isdon-shopping/reactEx/package.json",
 		"/E/development/isdon-react-ex/reactEx/assets/css/base.css",
 		"/E/development/isdon-react-ex/reactEx/package.json",
 		"/E/development/isdon-react-ex/.gitignore",
-		"/E/development/isdon-react-ex/reactEx/webpack.config.js",
-		"/E/development/isdon-react-ex/reactEx/jobs/serializers.py",
 		"/E/development/isdon-react-ex/env/Lib/site-packages/djangojs/urls.py",
 		"/E/development/isdon-react-ex/env/Lib/site-packages/djangojs/templates/djangojs/django_js_init.html",
 		"/E/development/isdon-react-ex/env/Lib/site-packages/djangojs/templates/djangojs/init.js",
@@ -683,7 +729,6 @@
 		"/E/development/isdon-react-ex/env/Lib/site-packages/djangojs/settings.py",
 		"/E/development/isdon-react-ex/reactEx/jobs/views.py",
 		"/E/development/isdon-react-ex/reactEx/accounts/views.py",
-		"/E/development/isdon-react-ex/reactEx/jobs/choices.py",
 		"/E/development/isdon-foal/display/urls.py",
 		"/E/development/isdon-foal/compressor/css/eb3d613749cd.css",
 		"/E/development/isdon-foal/display/templates/display/frm_edit_profile.html",
@@ -787,10 +832,7 @@
 		"/E/development/isdon-foal/upload-tester.py",
 		"/C/Users/IsDon/AppData/Local/Temp/fz3temp-3/views.py",
 		"/C/Users/IsDon/AppData/Local/Temp/fz3temp-3/settings.py",
-		"/C/Users/IsDon/AppData/Local/Temp/fz3temp-3/worker.py",
-		"/C/Users/IsDon/AppData/Local/Temp/fz3temp-3/error_sfsandbox.log",
-		"/C/Users/IsDon/AppData/Local/Temp/fz3temp-3/models.py",
-		"/E/development/isdon-foal/logs/django.log"
+		"/C/Users/IsDon/AppData/Local/Temp/fz3temp-3/worker.py"
 	],
 	"find":
 	{
@@ -801,6 +843,7 @@
 		"height": 90.0,
 		"where_history":
 		[
+			"<open files>",
 			"E:\\development\\isdon-foal\\display\\templates\\display",
 			"<open files>",
 			"E:\\development\\py_foal\\display,E:\\development\\py_foal\\accounts,E:\\development\\py_foal\\DjangoWebProject",
@@ -818,6 +861,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"handleClick",
+			".bind",
+			"action",
+			"removeFn",
+			"addItem",
+			"add",
+			"FormAddItem",
+			"%}\n",
+			"Job_Shift",
+			"webkit",
 			"DjangoCSRFToken",
 			"container",
 			"console.log",
@@ -935,17 +988,7 @@
 			"summarize",
 			"device_id",
 			"500",
-			"Device.objects",
-			"dev.device.pk",
-			"dev.device",
-			"dev.device.device_id",
-			"dev.device.id",
-			"dev.id",
-			"render_to_string",
-			"print",
-			"sqca.com.au",
-			"sqca.",
-			")\n"
+			"Device.objects"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -953,6 +996,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Action",
 			"JobsAppContainer",
 			"pk",
 			"WorkShift",
@@ -1054,29 +1098,30 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "reactEx/reactEx/views.py",
+					"file": "reactEx/accounts/models.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 308,
+						"buffer_size": 1021,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								308,
-								308
+								171,
+								127
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1087,19 +1132,132 @@
 				},
 				{
 					"buffer": 1,
-					"file": "reactEx/accounts/models.py",
+					"file": "reactEx/reactEx/views.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1020,
+						"buffer_size": 364,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1020,
-								1020
+								364,
+								364
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "reactEx/jobs/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2810,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1065,
+								1065
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "reactEx/responses/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3442,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								931,
+								940
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "reactEx/responses/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 602,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								98,
+								98
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "reactEx/jobs/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1414,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								90,
+								90
 							]
 						],
 						"settings":
@@ -1114,49 +1272,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "reactEx/jobs/models.py",
+					"buffer": 6,
+					"file": "reactEx/reactEx/urls.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2108,
+						"buffer_size": 2075,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								681,
-								681
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "reactEx/jobs/choices.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 349,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								198,
-								221
+								1065,
+								1065
 							]
 						],
 						"settings":
@@ -1166,49 +1295,20 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 215.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "reactEx/jobs/views.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2056,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								984,
-								984
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 6,
 			"sheets":
 			[
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "reactEx/jobs/tests.py",
 					"semi_transient": false,
 					"settings":
@@ -1232,24 +1332,53 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "reactEx/reactEx/settings.py",
+					"buffer": 8,
+					"file": "reactEx/assets/js/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5870,
+						"buffer_size": 11557,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4431,
-								4432
+								2942,
+								2942
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 192.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "reactEx/reactEx/settings.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5999,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1628,
+								1628
 							]
 						],
 						"settings":
@@ -1259,85 +1388,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1699.0,
+						"translation.y": 450.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "reactEx/assets/js/index.js",
+					"buffer": 10,
+					"file": "reactEx/jobs/models.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6283,
+						"buffer_size": 1546,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1390,
-								1390
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 720.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "reactEx/webpack.config.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2878,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								484,
-								484
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "reactEx/jobs/serializers.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 797,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								797,
-								797
+								1546,
+								1546
 							]
 						],
 						"settings":
@@ -1349,24 +1420,113 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "reactEx/assets/css/lists.css",
+					"buffer": 11,
+					"file": "reactEx/jobs/serializers.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2467,
+						"buffer_size": 2646,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								486,
-								486
+								1209,
+								1209
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 315.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "reactEx/reactEx/templates/reactEx/front.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1439,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1347,
+								1347
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "reactEx/logs/debug.log",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 293508,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								289558,
+								289558
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 80235.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "reactEx/assets/css/lists.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2614,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1566,
+								1566
 							]
 						],
 						"settings":
@@ -1377,10 +1537,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 743.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -1414,7 +1574,7 @@
 		"cols":
 		[
 			0.0,
-			0.5,
+			0.473265436028,
 			1.0
 		],
 		"rows":
@@ -1466,7 +1626,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
